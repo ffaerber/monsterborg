@@ -1,0 +1,19 @@
+{
+	  "name": "message-bus",
+	    "version": "1.0.0",
+	      "description": "",
+	        "main": "index.js",
+		  "dependencies": {
+			      "mosca": "2.5.2",
+			      "aedes": "0.30.0",
+			      "redis": "2.8.0",
+			      "dotenv": "4.0.0"
+			        },
+				  "devDependencies": {},
+				    "scripts": {
+					        "start": "node index.js"
+						  },
+						    "author": "",
+						      "license": "MIT"
+}
+

@@ -1,35 +1,35 @@
 require('dotenv').config()
 
 var gpsd = require('node-gpsd');
-var io = require('socket.io-client');
+var mqtt = require('mqtt')
 
 var daemon = new gpsd.Daemon({
-  program: '/usr/sbin/gpsd',
-  device: process.env.DEVICE
+	program: '/usr/sbin/gpsd',
+	device: process.env.DEVICE,
+	logger: {
+		info: console.log,
+		warn: console.warn,
+	        error: console.error
+	}
 });
 
-var socket = io.connect(process.env.SOCKET_IO_HOST);
-socket.on('connect', () => {
-  console.log('socketio connect');
+console.log('connect to ' + process.env.MESSAGE_BUS_HOST)
+var mqttClient = mqtt.connect(process.env.MESSAGE_BUS_HOST)
+
+mqttClient.on('connect', () => {
+  console.log('socketio connected');
   daemon.start(() => {
     console.log('gpsd started');
     var listener = new gpsd.Listener();
-
+    
     listener.on('TPV', (tpv) => {
-      socket.emit(tpv);
+	mqttClient.publish('gps', JSON.stringify(tpv))
     });
 
     listener.connect(() => {
       listener.watch();
     });
   });
-
 })
 
-socket.on('event', (data) => {
-  console.log('socket event' + data);
-});
 
-socket.on('disconnect', () => {
-  console.log('disconnect');
-});

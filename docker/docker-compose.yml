@@ -1,10 +1,20 @@
 version: '3.3'
 
-
 services:
 
   gps:
     build:
       context: ./gps
-      dockerfile: Dockerfile
-    env_file: .env
+    environment:
+      MESSAGE_BUS_HOST: 'mqtt://test.mosquitto.org'
+      DEVICE: '/dev/ttyUSB0'
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    depends_on:
+      - message-bus
+
+  message-bus:
+    build:
+      context: ./message-bus
+
+

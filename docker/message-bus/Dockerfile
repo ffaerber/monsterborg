@@ -4,10 +4,9 @@ MAINTAINER Felix Faerber <ffaerber@gmail.com>
 RUN apt-get update && \
     apt-get install -y \
     vim \
-    curl \
-    gpsd \
-    gpsd-clients \
-    python-gps
+    node-gyp \
+    make \
+    curl
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sh
 RUN apt-get install -y nodejs
@@ -22,4 +21,9 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
+EXPOSE 80
+EXPOSE 1883
+
 CMD [ "node", "index.js" ]
+
+

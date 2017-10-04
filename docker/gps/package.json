@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "4.0.0",
     "node-gpsd": "0.3.0",
-    "socket.io-client": "2.0.3"
+    "mqtt": "2.13.0"
   }
 }
