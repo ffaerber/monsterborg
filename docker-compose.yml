@@ -7,7 +7,7 @@ services:
       context: ./client
     environment:
       MESSAGE_BUS_HOST: 'mqtt://message-bus'
-      GROUND_STATION_HOST: 'mqtt://ground-station'
+      GROUND_STATION_HOST: 'http://socketio.ffaerber.com'
     depends_on:
       - message-bus
 
@@ -15,7 +15,7 @@ services:
     build:
       context: ./gps
     environment:
-      MESSAGE_BUS_HOST: 'mqtt://test.mosquitto.org'
+      MESSAGE_BUS_HOST: 'mqtt://message-bus'
       DEVICE: '/dev/ttyUSB0'
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
