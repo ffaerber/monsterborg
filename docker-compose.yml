@@ -11,6 +11,14 @@ services:
     depends_on:
       - message-bus
 
+  camera:
+    build:
+      context: ./camera
+    environment:
+      MESSAGE_BUS_HOST: 'mqtt://message-bus'
+    depends_on:
+      - message-bus
+
   gps:
     build:
       context: ./gps
