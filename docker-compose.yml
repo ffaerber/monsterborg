@@ -2,6 +2,15 @@ version: '3.3'
 
 services:
 
+  client:
+    build:
+      context: ./client
+    environment:
+      MESSAGE_BUS_HOST: 'mqtt://message-bus'
+      GROUND_STATION_HOST: 'mqtt://ground-station'
+    depends_on:
+      - message-bus
+
   gps:
     build:
       context: ./gps
@@ -16,5 +25,3 @@ services:
   message-bus:
     build:
       context: ./message-bus
-
-
