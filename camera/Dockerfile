@@ -1,10 +1,13 @@
-FROM arm32v7/ubuntu:17.10
+FROM resin/rpi-raspbian
 MAINTAINER Felix Faerber <ffaerber@gmail.com>
 
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y \
     vim \
-    curl
+    curl \
+    iputils-ping \
+    gpac
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sh
 RUN apt-get install -y nodejs
