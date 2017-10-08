@@ -12,6 +12,17 @@ services:
     depends_on:
       - message-bus
 
+  thunderborg:
+    build:
+      context: ./thunderborg
+    restart: always
+    environment:
+      MESSAGE_BUS_HOST: 'mqtt://message-bus'
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+    depends_on:
+      - message-bus
+
   gps:
     build:
       context: ./gps

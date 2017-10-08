@@ -21,9 +21,9 @@ mqttClient.on('connect', () => {
   daemon.start(() => {
     console.log('gpsd started');
     var listener = new gpsd.Listener();
-    
+
     listener.on('TPV', (tpv) => {
-	mqttClient.publish('gps', JSON.stringify(tpv))
+    mqttClient.publish('gps', JSON.stringify(tpv))
     });
 
     listener.connect(() => {
@@ -31,5 +31,3 @@ mqttClient.on('connect', () => {
     });
   });
 })
-
-
