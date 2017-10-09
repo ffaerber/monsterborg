@@ -22,6 +22,10 @@ services:
       - "/dev/i2c-1:/dev/i2c-1"
     depends_on:
       - message-bus
+    deploy:
+      resources:
+        limits:
+          memory: 50M
 
   gps:
     build:
@@ -39,3 +43,7 @@ services:
     build:
       context: ./message-bus
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 50M
