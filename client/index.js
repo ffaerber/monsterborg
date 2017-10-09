@@ -19,11 +19,9 @@ groundStation.on('connect', () => {
 });
 
 groundStation.on('event', (data) => {
-  groundStation.emit(data)
-  console.log('groundStation event' + data)
+  messageBus.publish('groundStation', 'data')
 });
 
 groundStation.on('disconnect', () => {
   console.log('groundStation disconnected')
 });
-

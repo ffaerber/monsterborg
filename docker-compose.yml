@@ -12,6 +12,11 @@ services:
     depends_on:
       - message-bus
 
+  message-bus:
+    build:
+      context: ./message-bus
+    restart: always
+
   thunderborg:
     build:
       context: ./thunderborg
@@ -34,8 +39,3 @@ services:
   #     - "/dev/ttyUSB0:/dev/ttyUSB0"
   #   depends_on:
   #     - message-bus
-
-  message-bus:
-    build:
-      context: ./message-bus
-    restart: always
