@@ -17,15 +17,11 @@ services:
       context: ./thunderborg
     restart: always
     environment:
-      MESSAGE_BUS_HOST: 'mqtt://message-bus'
-    devices:
-      - "/dev/i2c-1:/dev/i2c-1"
+      MESSAGE_BUS_HOST: 'message-bus'
     depends_on:
       - message-bus
-    deploy:
-      resources:
-        limits:
-          memory: 50M
+    #devices:
+    # - "/dev/i2c-1:/dev/i2c-1"
 
   # gps:
   #   build:
@@ -43,7 +39,3 @@ services:
     build:
       context: ./message-bus
     restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 50M

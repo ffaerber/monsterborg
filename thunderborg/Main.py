@@ -1,9 +1,7 @@
-# import ThunderBorg
-# TB = ThunderBorg.ThunderBorg()
-# TB.Init()
-
-
+import os
 import paho.mqtt.client as mqtt
+
+print('connecting to ' + os.environ['MESSAGE_BUS_HOST'])
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -21,7 +19,7 @@ client = mqtt.Client('thunderborg')
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("iot.eclipse.org", 1883, 60)
+client.connect(os.environ['MESSAGE_BUS_HOST'], 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
