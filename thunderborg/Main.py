@@ -1,5 +1,6 @@
 import os
 import paho.mqtt.client as mqtt
+import json
 
 print('connecting to ' + os.environ['MESSAGE_BUS_HOST'])
 
@@ -13,7 +14,11 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    message = eval(msg.payload)
+    method_to_call = globals()[message['method']](message['attributes'])
+
+def getBatteryLevel(attr):
+    print(attr)
 
 client = mqtt.Client('thunderborg')
 client.on_connect = on_connect

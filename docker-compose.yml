@@ -25,17 +25,16 @@ services:
       MESSAGE_BUS_HOST: 'message-bus'
     depends_on:
       - message-bus
-    #devices:
-    # - "/dev/i2c-1:/dev/i2c-1"
 
-  # gps:
-  #   build:
-  #     context: ./gps
-  #   restart: always
-  #   environment:
-  #     MESSAGE_BUS_HOST: 'mqtt://message-bus'
-  #     DEVICE: '/dev/ttyUSB0'
-  #   devices:
-  #     - "/dev/ttyUSB0:/dev/ttyUSB0"
-  #   depends_on:
-  #     - message-bus
+  gps:
+    build:
+      context: ./gps
+    restart: always
+    environment:
+      MESSAGE_BUS_HOST: 'mqtt://message-bus'
+      DEVICE: '/dev/ttyUSB0'
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    depends_on:
+      - message-bus
+
