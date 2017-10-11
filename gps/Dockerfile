@@ -1,10 +1,11 @@
-FROM arm32v7/ubuntu:17.10
+FROM arm32v7/debian:stretch-slim
 MAINTAINER Felix Faerber <ffaerber@gmail.com>
 
 RUN apt-get update && \
     apt-get install -y \
     vim \
     curl \
+    gnupg \
     gpsd \
     gpsd-clients \
     python-gps
