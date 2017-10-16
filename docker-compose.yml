@@ -38,3 +38,18 @@ services:
     depends_on:
       - message-bus
 
+  camera:
+    image: mhiro2/rpi-ffmpeg:3.3
+    command:
+      - '-f video4linux2'
+      - '-i /dev/video0'
+      - '-vcodec libx264'
+      - '-preset ultrafast'
+      - '-pix_fmt yuv420p'
+      - '-s 640x360'
+      - '-r 30'
+      - '-b:v 500k'
+      - '-bufsize 500k'
+    restart: always
+    devices:
+      - "/dev/video0:/dev/video0"
