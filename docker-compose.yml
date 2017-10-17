@@ -21,6 +21,8 @@ services:
     build:
       context: ./thunderborg
     restart: always
+    volumes:
+      - "/dev/i2c-1:/dev/i2c-1"
     environment:
       MESSAGE_BUS_HOST: 'message-bus'
     depends_on:

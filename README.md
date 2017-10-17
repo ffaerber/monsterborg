@@ -1,3 +1,9 @@
+
+### add i2c
+sudo apt-get update
+sudo apt-get install raspi-config
+
+
 ###docker-compose
 - https://github.com/javabean/arm-compose/releases
 - wget https://github.com/javabean/arm-compose/releases/download/1.16.1/docker-compose-Linux-armv7l
