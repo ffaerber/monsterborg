@@ -16,13 +16,13 @@ TB.Init()                          # Set the board up (checks the board is conne
 if not TB.foundChip:
     boards = ThunderBorg.ScanForThunderBorg()
     if len(boards) == 0:
-        print 'No ThunderBorg found, check you are attached :)'
+        print('No ThunderBorg found, check you are attached :)')
     else:
-        print 'No ThunderBorg at address %02X, but we did find boards:' % (TB.i2cAddress)
+        print('No ThunderBorg at address %02X, but we did find boards:' % (TB.i2cAddress))
         for board in boards:
-            print '    %02X (%d)' % (board, board)
-        print 'If you need to change the I�C address change the setup line so it is correct, e.g.'
-        print 'TB.i2cAddress = 0x%02X' % (boards[0])
+            print('    %02X (%d)' % (board, board))
+        print('If you need to change the I2C address change the setup line so it is correct, e.g.')
+        print('TB.i2cAddress = 0x%02X' % (boards[0]))
     sys.exit()
 
 # Disable the colour by battery level
