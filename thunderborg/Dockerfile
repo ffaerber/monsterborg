@@ -1,10 +1,10 @@
-FROM arm32v7/python:3.4.7-slim
+FROM arm32v7/python:3.7.1-slim
 
 RUN apt-get update && \
-    apt-get install -y \
-    i2c-tools \
-    vim \
-    curl
+  apt-get install -y \
+  i2c-tools \
+  vim \
+  curl
 
 WORKDIR /usr/src/app
 
