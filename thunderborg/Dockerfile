@@ -1,4 +1,4 @@
-FROM arm32v7/python:2.7.15
+FROM arm32v7/python:2.7.15-slim
 
 RUN apt-get update && \
   apt-get install -y \
