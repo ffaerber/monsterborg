@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.7.1-slim
+FROM arm32v7/python:2.7.15
 
 RUN apt-get update && \
   apt-get install -y \
@@ -15,4 +15,4 @@ COPY . .
 
 RUN chmod a+x *.py
 
-CMD [ "python3", "-u", "./Main.py" ]
+CMD [ "python", "-u", "./Main.py" ]
